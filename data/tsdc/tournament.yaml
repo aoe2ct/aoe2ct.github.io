@@ -1,0 +1,28 @@
+name: T90 Sudden Death Cup
+maps:
+  - TSDC Acaray
+  - TSDC Aftermath
+  - TSDC Border Dispute
+  - TSDC Brood War
+  - TSDC Eredo-Iya
+  - TSDC Hamburger
+  - TSDC Kirby's World
+  - TSDC Lagoon
+  - TSDC Meltdown
+  - TSDC Sand_Trap
+  - TSDC Sand Trap
+  - TSDC Wellsprings
+brackets:
+  - Champions
+  - Monks
+  - Mangonels
+  - Knights
+  - Crossbows
+  - Militia
+presets:
+  maps:
+    bo3: muljN
+    bo5: HUdMg
+  civs:
+    bo3: WvBUt
+    bo5: wiooS
