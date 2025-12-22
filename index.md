@@ -16,4 +16,3 @@ import { withBase } from "vitepress";
 <ul>
   <li v-for="tournament in data" :key="tournament.code"><a :href="withBase(`tournaments/${tournament.code}`)">{{ tournament.name }}</a></li>
 </ul>
-<pre>{{ data }}</pre>
