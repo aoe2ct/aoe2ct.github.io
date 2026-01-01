@@ -53,55 +53,69 @@ const availableSeries = {
   },
   playerBans(counts: Counts[]) {
     return counts.map(([_, count]) => count.player.ban);
+  },
+  civPlayed(counts) {
+    return counts.map(([_, count]) => count);
+  },
+  civWinrate(counts) {
+    return counts.map(([_, count]) => count.winrate);
   }
 };
 
 type Series = typeof availableSeries;
-export type SeriesParam = { title: string, type: keyof Series };
+export type SeriesParam = { title?: string, type: keyof Series };
 
-const props = defineProps<{
+const { counts, title, yAxis, series, horizontal = false } = defineProps<{
   counts: Counts[],
   title: string,
   yAxis: string,
-  series: SeriesParam[]
+  series: SeriesParam[],
+  horizontal?: boolean
 }>();
 const { isDark } = useData();
 provide(THEME_KEY, isDark ? "chalk" : "vintage")
 
 
-const option: ComputedRef<EChartsOption> = computed(() => ({
-  title: {
-    text: props.title
-  },
-  tooltip: {
-    show: true
-  },
-  xAxis: {
-    type: 'category',
-    axisTick: {
-      alignWithLabel: true
+const option: ComputedRef<EChartsOption> = computed(() => {
+  const labels = counts.map(([map, _]) => map);
+  return {
+    title: {
+      text: title
     },
-    axisLabel: {
-      rotate: 30
+    tooltip: {
+      show: true
     },
-    data: props.counts.map(([map, _]) => map)
-  },
-  yAxis: {
-    name: props.yAxis
-  },
-  series: props.series.map(series => (
-    {
-      name: series.title,
-      type: "bar",
-      data: availableSeries[series.type](props.counts),
-      stack: "x"
-    }))
-}));
+    xAxis: {
+      name: horizontal ? yAxis : undefined,
+      type: horizontal ? 'value' : 'category',
+      axisTick: {
+        alignWithLabel: true
+      },
+      axisLabel: {
+        rotate: 30
+      },
+      data: horizontal ? undefined : labels
+    },
+    yAxis: {
+      name: horizontal ? undefined : yAxis,
+      type: horizontal ? 'category' : 'value',
+      data: horizontal ? labels : undefined
+    },
+    series: series.map(series => (
+      {
+        name: series.title,
+        type: "bar",
+        data: availableSeries[series.type](counts),
+        stack: "x",
+        markLine: series.type == 'civWinrate' ? {} : undefined
+      }))
+  }
+});
 </script>
 <template>
   <div>
     <ClientOnly>
-      <v-chart style="height: 500px" :option="option" />
+      <v-chart :style="{ height: horizontal ? '1000px' : '500px' }" :option="option" />
     </ClientOnly>
   </div>
 </template>

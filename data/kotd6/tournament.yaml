@@ -1,0 +1,20 @@
+name: King of the Desert 6
+logo: https://liquipedia.net/commons/images/9/98/King_of_the_Desert_VI_allmode.png
+discord: https://discord.gg/PK8FDfQa67
+handbook: https://assets.adobe.com/id/urn:aaid:sc:US:1684b634-5e3d-4e4a-b278-d316b7fcf18a?view=published#
+liquipedia: https://liquipedia.net/ageofempires/King_of_the_Desert/6
+drafts: civ # both (default), civ, map, none
+maps:
+  - KotD, Arabia
+  - KotD6, Arabia
+  - KotD6_no_predators
+brackets:
+  - Top64
+  - Top32
+  - Top16
+  - Top8
+presets:
+  civs:
+    bo5: hWBgR
+    bo7: TLaTl
+    bo9: XAvCT
