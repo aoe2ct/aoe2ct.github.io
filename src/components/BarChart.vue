@@ -19,6 +19,7 @@ import type {
 import VChart, { THEME_KEY } from "vue-echarts";
 import { useData } from 'vitepress';
 import { computed, ComputedRef, provide } from 'vue';
+import { Counts } from '../types';
 
 use([
   TitleComponent,
@@ -37,37 +38,40 @@ type EChartsOption = ComposeOption<
   | BarSeriesOption
 >;
 
+const availableSeries = {
+  adminPicks(counts: Counts[]) {
+    return counts.map(([_, count]) => count.admin.pick - count.admin.snipe);
+  },
+  playerPicks(counts: Counts[]) {
+    return counts.map(([_, count]) => count.player.pick - count.player.snipe);
+  },
+  playerSnipes(counts: Counts[]) {
+    return counts.map(([_, count]) => count.player.snipe);
+  },
+  adminBans(counts: Counts[]) {
+    return counts.map(([_, count]) => count.admin.ban);
+  },
+  playerBans(counts: Counts[]) {
+    return counts.map(([_, count]) => count.player.ban);
+  }
+};
 
-const props = defineProps(['drafts'])
+type Series = typeof availableSeries;
+export type SeriesParam = { title: string, type: keyof Series };
+
+const props = defineProps<{
+  counts: Counts[],
+  title: string,
+  yAxis: string,
+  series: SeriesParam[]
+}>();
 const { isDark } = useData();
 provide(THEME_KEY, isDark ? "chalk" : "vintage")
 
-const mapCounts = computed(() => {
-  if (!props.drafts) {
-    return [];
-  }
-  return Object.entries(props.drafts.reduce((acc, draft) => {
-    const draftCounts = draft.draft.reduce((acc, action) => {
-      if (action.action != 'pick') {
-        return acc;
-      }
-      return { ...acc, [action.map]: action.type }
-    }, {});
 
-    return Object.entries(draftCounts).reduce((acc_inner, [map, executor]) => {
-      return {
-        ...acc_inner, [map]: {
-          admin: (acc_inner[map]?.admin ?? 0) + (executor == "admin"),
-          player: (acc_inner[map]?.player ?? 0) + (executor == "player"),
-        }
-      }
-    }, acc)
-  }, {})).sort((a, b) => b[1].admin + b[1].player - a[1].admin - a[1].player
-  );
-})
 const option: ComputedRef<EChartsOption> = computed(() => ({
   title: {
-    text: "Map Drafts"
+    text: props.title
   },
   tooltip: {
     show: true
@@ -80,25 +84,18 @@ const option: ComputedRef<EChartsOption> = computed(() => ({
     axisLabel: {
       rotate: 30
     },
-    data: mapCounts.value.map(([map, _]) => map)
+    data: props.counts.map(([map, _]) => map)
   },
   yAxis: {
-    name: "Picks"
+    name: props.yAxis
   },
-  series: [
+  series: props.series.map(series => (
     {
-      name: "Player picks",
+      name: series.title,
       type: "bar",
-      data: mapCounts.value.map(([_, count]) => count.player),
+      data: availableSeries[series.type](props.counts),
       stack: "x"
-    },
-    {
-      name: "Admin picks",
-      type: "bar",
-      data: mapCounts.value.map(([_, count]) => count.admin),
-      stack: "x"
-    }
-  ]
+    }))
 }));
 </script>
 <template>
@@ -106,7 +103,5 @@ const option: ComputedRef<EChartsOption> = computed(() => ({
     <ClientOnly>
       <v-chart style="height: 500px" :option="option" />
     </ClientOnly>
-    <pre>
-    </pre>
   </div>
 </template>

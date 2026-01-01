@@ -30,7 +30,7 @@ export default defineConfig({
       { text: 'Home', link: '/' },
       {
         text: 'Tournaments',
-        items: tournaments.map(tournament => ({ text: tournament.name, link: `/tournament/${tournament.code}` }))
+        items: tournaments.map(tournament => ({ text: tournament.name, link: `/tournaments/${tournament.code}` }))
       }
     ],
     socialLinks: [
