@@ -1,25 +1,25 @@
 <script setup lang="ts">
-import { use } from 'echarts/core';
-import { BarChart } from 'echarts/charts';
+import { use } from "echarts/core";
+import { BarChart } from "echarts/charts";
 import {
   TitleComponent,
   TooltipComponent,
   LegendComponent,
-  GridComponent
-} from 'echarts/components';
-import { CanvasRenderer } from 'echarts/renderers';
-import type { ComposeOption } from 'echarts/core';
-import type { BarSeriesOption } from 'echarts/charts';
+  GridComponent,
+} from "echarts/components";
+import { CanvasRenderer } from "echarts/renderers";
+import type { ComposeOption } from "echarts/core";
+import type { BarSeriesOption } from "echarts/charts";
 import type {
   TitleComponentOption,
   TooltipComponentOption,
   LegendComponentOption,
-  GridComponentOption
-} from 'echarts/components';
+  GridComponentOption,
+} from "echarts/components";
 import VChart, { THEME_KEY } from "vue-echarts";
-import { useData } from 'vitepress';
-import { computed, ComputedRef, provide } from 'vue';
-import { Counts } from '../types';
+import { useData } from "vitepress";
+import { computed, ComputedRef, provide } from "vue";
+import { Counts } from "../types";
 
 use([
   TitleComponent,
@@ -27,7 +27,7 @@ use([
   LegendComponent,
   GridComponent,
   BarChart,
-  CanvasRenderer
+  CanvasRenderer,
 ]);
 
 type EChartsOption = ComposeOption<
@@ -39,83 +39,116 @@ type EChartsOption = ComposeOption<
 >;
 
 const availableSeries = {
-  adminPicks(counts: Counts[]) {
-    return counts.map(([_, count]) => count.admin.pick - count.admin.snipe);
+  adminPicks(counts: Counts[]): BarSeriesOption {
+    return {
+      data: counts.map(([_, count]) => count.admin.pick - count.admin.snipe),
+    };
   },
-  playerPicks(counts: Counts[]) {
-    return counts.map(([_, count]) => count.player.pick - count.player.snipe);
+  playerPicks(counts: Counts[]): BarSeriesOption {
+    return {
+      data: counts.map(([_, count]) => count.player.pick - count.player.snipe),
+    };
   },
-  playerSnipes(counts: Counts[]) {
-    return counts.map(([_, count]) => count.player.snipe);
+  playerSnipes(counts: Counts[]): BarSeriesOption {
+    return { data: counts.map(([_, count]) => count.player.snipe) };
   },
-  adminBans(counts: Counts[]) {
-    return counts.map(([_, count]) => count.admin.ban);
+  adminBans(counts: Counts[]): BarSeriesOption {
+    return { data: counts.map(([_, count]) => count.admin.ban) };
   },
-  playerBans(counts: Counts[]) {
-    return counts.map(([_, count]) => count.player.ban);
+  playerBans(counts: Counts[]): BarSeriesOption {
+    return { data: counts.map(([_, count]) => count.player.ban) };
   },
-  civPlayed(counts) {
-    return counts.map(([_, count]) => count);
+  civPlayed(counts): BarSeriesOption {
+    return { data: counts.map(([_, count]) => count) };
   },
-  civWinrate(counts) {
-    return counts.map(([_, count]) => count.winrate);
-  }
+  civWinrate(counts): BarSeriesOption {
+    return {
+      data: counts.map(([_, count]) => Math.round(count.winrate * 10000) / 100),
+    };
+  },
 };
 
 type Series = typeof availableSeries;
-export type SeriesParam = { title?: string, type: keyof Series };
+export type SeriesParam = { title?: string; type: keyof Series };
 
-const { counts, title, yAxis, series, horizontal = false } = defineProps<{
-  counts: Counts[],
-  title: string,
-  yAxis: string,
-  series: SeriesParam[],
-  horizontal?: boolean
+const {
+  counts,
+  title,
+  yAxis,
+  series,
+  horizontal = false,
+  valueFormatter = undefined,
+  labelFormat = "{value}",
+} = defineProps<{
+  counts: Counts[];
+  title: string;
+  yAxis: string;
+  series: SeriesParam[];
+  horizontal?: boolean;
+  valueFormatter?: TooltipComponentOption["valueFormatter"];
+  labelFormat?: string;
 }>();
 const { isDark } = useData();
-provide(THEME_KEY, isDark ? "chalk" : "vintage")
-
+provide(THEME_KEY, isDark ? "chalk" : "vintage");
 
 const option: ComputedRef<EChartsOption> = computed(() => {
   const labels = counts.map(([map, _]) => map);
   return {
     title: {
-      text: title
+      text: title,
     },
     tooltip: {
-      show: true
+      show: true,
+      trigger: "axis",
+      axisPointer: {
+        type: "cross",
+        label: {
+          formatter: ({ axisDimension, value }) => {
+            const categoryDimension = horizontal ? "y" : "x";
+            if (axisDimension == categoryDimension) {
+              return value;
+            }
+            const roundedValue =
+              typeof value == "number" ? Math.round(value * 100) / 100 : value;
+            return labelFormat.replace("{value}", `${roundedValue}`);
+          },
+        },
+      },
+      valueFormatter,
     },
     xAxis: {
       name: horizontal ? yAxis : undefined,
-      type: horizontal ? 'value' : 'category',
+      type: horizontal ? "value" : "category",
       axisTick: {
-        alignWithLabel: true
+        alignWithLabel: true,
       },
       axisLabel: {
-        rotate: 30
+        rotate: 30,
+        formatter: labelFormat,
       },
-      data: horizontal ? undefined : labels
+      data: horizontal ? undefined : labels,
     },
     yAxis: {
       name: horizontal ? undefined : yAxis,
-      type: horizontal ? 'category' : 'value',
-      data: horizontal ? labels : undefined
+      type: horizontal ? "category" : "value",
+      data: horizontal ? labels : undefined,
     },
-    series: series.map(series => (
-      {
-        name: series.title,
-        type: "bar",
-        data: availableSeries[series.type](counts),
-        stack: "x",
-        markLine: series.type == 'civWinrate' ? {} : undefined
-      }))
-  }
+    series: series.map((series) => ({
+      name: series.title,
+      type: "bar",
+      stack: "x",
+      ...availableSeries[series.type](counts),
+    })),
+  };
 });
 </script>
 <template>
   <div>
     <ClientOnly>
-      <v-chart :style="{ height: horizontal ? '1000px' : '500px' }" :option="option" />
+      <v-chart
+        :style="{ height: horizontal ? '1000px' : '500px' }"
+        :option="option"
+      />
     </ClientOnly>
   </div>
 </template>
