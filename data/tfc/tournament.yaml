@@ -1,0 +1,25 @@
+name: The Forlorn Cup
+maps:
+  - Alpine Lakes
+  - City of Lakes
+  - Dingos
+  - Eruption
+  - Mangrove Jungle
+  - Moats
+  - Mountain Range
+  - Ring Fortress
+  - Volcanic Island
+brackets:
+  - Condottiero
+  - Champion
+  - Two-Handed Swordsman
+  - Long Swordsman
+  - Man-at-Arms
+  - Militia
+presets:
+  maps:
+    bo3: XKOEy
+    bo5: iwGzS
+  civs:
+    bo3: wJCDF
+    bo5: IdyHH
