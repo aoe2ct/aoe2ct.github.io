@@ -1,0 +1,44 @@
+name: Brazilian Dynasty
+maps:
+  - BD Amazônia v2
+  - BD Araucárias v2
+  - BD Arena Costeira v1
+  - BD Fernando de Noronha v2
+  - BD Festa da Pólvora v3
+  - BD Lençóis Maranhenses v1
+  - BD Monte Pascoal v2
+  - BD Pantanal v1
+  - BD Parque do Ipiranga v1
+  - BD Serra dos Carajás v1
+  - BD Sertão v3
+  - BD Tepui v2
+  - BD Vale da Selva v3
+brackets:
+  - Main Event
+  - International Qualifier 1
+  - International Qualifier 2
+  - Regional Qualifier
+presets:
+  maps:
+    pa3: MSnJa
+    bo5: Pakfr
+    bo7: Wutuo
+  civs:
+    pa3: FfEWE
+    bo5: MYZqS
+    bo7: oGaao
+    bo3: TlbAr
+naming:
+  maps:
+    prefix: BD
+    versioned: true
+  map_draft:
+    renames:
+      Amazonia: Amazônia
+      Araucarias: Araucárias
+      Festa da Polvora: Festa da Pólvora
+      Lencois Maranhenses: Lençóis Maranhenses
+      Parque-do-Ipiranga: Parque do Ipiranga
+      Serra da Carajas: Serra dos Carajás
+      Sertao: Sertão
+      Vale de Selva: Vale da Selva

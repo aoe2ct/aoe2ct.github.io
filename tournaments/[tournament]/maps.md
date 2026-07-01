@@ -7,9 +7,9 @@ import MapStatsTables from '../../src/components/MapStatsTables.vue';
 </script>
 
 <style>
-@import url("../../src/styles/warlords.css");
+@import url("../../src/styles/brazilian-dynasty.css");
 </style>
 
-<section class="warlords">
+<section class="brazilian-dynasty">
 <MapStatsTables :code="$params.tournament" :preset-map-names="$params.presetMapChoices" />
 </section>

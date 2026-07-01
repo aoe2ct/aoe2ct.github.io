@@ -21,7 +21,6 @@ watchEffect(async () => {
 });
 
 const draftStats = computed(() => {
-  console.log(drafts.value.mapDrafts);
   const emptyObj = Object.fromEntries(
     Object.values(props.presetMapNames).map((mapName) => [
       mapName,
