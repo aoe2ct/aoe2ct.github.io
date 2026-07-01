@@ -23,7 +23,7 @@ const props = defineProps<{
       <tr>
         <td class="map">Map</td>
         <td>Played</td>
-        <td>Admin Picks</td>
+        <td>Neutral Map</td>
         <td>Player Picks</td>
         <td>Total time played</td>
         <td>Longest game</td>
