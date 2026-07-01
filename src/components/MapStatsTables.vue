@@ -24,7 +24,7 @@ const draftStats = computed(() => {
   const emptyObj = Object.fromEntries(
     Object.values(props.presetMapNames).map((mapName) => [
       mapName,
-      { admin_picks: 0, picks: 0 },
+      { admin_picks: 0, picks: 0, admin_bans: 0, bans: 0 },
     ]),
   );
   return drafts.value.mapDrafts
@@ -35,10 +35,21 @@ const draftStats = computed(() => {
           (cumulator, action) => {
             const mapName = props.presetMapNames[action.map] ?? action.map;
             const admin_picks =
-              cumulator[mapName].admin_picks + (action.type == "admin" ? 1 : 0);
+              cumulator[mapName].admin_picks +
+              (action.type == "admin" && action.action == "pick" ? 1 : 0);
+            const admin_bans =
+              cumulator[mapName].admin_bans +
+              (action.type == "admin" && action.action == "ban" ? 1 : 0);
             const picks =
-              cumulator[mapName].picks + (action.type == "player" ? 1 : 0);
-            return { ...cumulator, [mapName]: { admin_picks, picks } };
+              cumulator[mapName].picks +
+              (action.type == "player" && action.action == "pick" ? 1 : 0);
+            const bans =
+              cumulator[mapName].bans +
+              (action.type == "player" && action.action == "ban" ? 1 : 0);
+            return {
+              ...cumulator,
+              [mapName]: { admin_picks, picks, admin_bans, bans },
+            };
           },
           { ...emptyObj },
         );
@@ -49,7 +60,11 @@ const draftStats = computed(() => {
               admin_picks:
                 accumulator[mapName].admin_picks +
                 draftTotals[mapName].admin_picks,
+              admin_bans:
+                accumulator[mapName].admin_bans +
+                draftTotals[mapName].admin_bans,
               picks: accumulator[mapName].picks + draftTotals[mapName].picks,
+              bans: accumulator[mapName].bans + draftTotals[mapName].bans,
             },
           };
         }, overallStats);
@@ -112,6 +127,8 @@ const mapStats = computed(() => {
       const players = playerStats.value[mapName];
       const picks = drafts.picks;
       const admin_picks = drafts.admin_picks;
+      const bans = drafts.bans;
+      const admin_bans = drafts.admin_bans;
       const played = players.played / 2;
       const duration = players.duration / 2;
       const civCounts = Object.entries(
@@ -124,6 +141,8 @@ const mapStats = computed(() => {
         name: mapName,
         picks,
         admin_picks,
+        bans,
+        admin_bans,
         played,
         played_pct: Math.round((played / (picks + admin_picks)) * 100),
         total_duration: duration,

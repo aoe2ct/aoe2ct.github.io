@@ -6,6 +6,8 @@ const props = defineProps<{
     name: string;
     picks: number;
     admin_picks: number;
+    bans: number;
+    admin_bans: number;
     played: number;
     played_pct: number;
     total_duration: number;
@@ -25,6 +27,8 @@ const props = defineProps<{
         <td>Played</td>
         <td>Neutral Map</td>
         <td>Player Picks</td>
+        <td>Admin Bans</td>
+        <td>Player Bans</td>
         <td>Total time played</td>
         <td>Longest game</td>
         <td>Shortest game</td>
@@ -43,6 +47,8 @@ const props = defineProps<{
         <td>{{ stats.played }} ({{ stats.played_pct }}%)</td>
         <td>{{ stats.admin_picks }}</td>
         <td>{{ stats.picks }}</td>
+        <td>{{ stats.admin_bans }}</td>
+        <td>{{ stats.bans }}</td>
         <td>{{ durationToString(stats.total_duration) }}</td>
         <td>{{ durationToString(stats.max_duration) }}</td>
         <td>{{ durationToString(stats.min_duration) }}</td>
