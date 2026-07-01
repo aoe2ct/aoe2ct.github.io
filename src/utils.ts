@@ -24,9 +24,9 @@ export async function fetchData(tournament: string, type: string) {
 export function durationToString(duration: number) {
   const durationStr = format(
     new UTCDate(fromUnixTime(duration / 1000)),
-    "HH:mm:ss",
+    "H:mm:ss",
   );
-  return durationStr.startsWith("00:") ? durationStr.slice(3) : durationStr;
+  return durationStr.startsWith("0:") ? durationStr.slice(2) : durationStr;
 }
 
 export function iconName(name: string) {
