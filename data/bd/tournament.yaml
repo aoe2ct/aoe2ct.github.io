@@ -1,16 +1,16 @@
 name: Brazilian Dynasty
 maps:
-  - BD Amazônia v2
-  - BD Araucárias v2
+  - "BD Amaz\xF4nia v2"
+  - "BD Arauc\xE1rias v2"
   - BD Arena Costeira v1
   - BD Fernando de Noronha v2
-  - BD Festa da Pólvora v3
-  - BD Lençóis Maranhenses v1
+  - "BD Festa da P\xF3lvora v3"
+  - "BD Len\xE7\xF3is Maranhenses v1"
   - BD Monte Pascoal v2
   - BD Pantanal v1
   - BD Parque do Ipiranga v1
-  - BD Serra dos Carajás v1
-  - BD Sertão v3
+  - "BD Serra dos Caraj\xE1s v1"
+  - "BD Sert\xE3o v3"
   - BD Tepui v2
   - BD Vale da Selva v3
 brackets:
@@ -34,11 +34,16 @@ naming:
     versioned: true
   map_draft:
     renames:
-      Amazonia: Amazônia
-      Araucarias: Araucárias
-      Festa da Polvora: Festa da Pólvora
-      Lencois Maranhenses: Lençóis Maranhenses
+      Amazonia: "Amaz\xF4nia"
+      Araucarias: "Arauc\xE1rias"
+      Festa da Polvora: "Festa da P\xF3lvora"
+      Lencois Maranhenses: "Len\xE7\xF3is Maranhenses"
       Parque-do-Ipiranga: Parque do Ipiranga
-      Serra da Carajas: Serra dos Carajás
-      Sertao: Sertão
+      Serra da Carajas: "Serra dos Caraj\xE1s"
+      Sertao: "Sert\xE3o"
       Vale de Selva: Vale da Selva
+map_renames:
+  Fernando de Noronha BD: BD Fernando de Noronha v2
+  "Len\xE7\xF3is Maranhenses BD": "BD Len\xE7\xF3is Maranhenses v1"
+  "Amaz\xF4nia BD": "BD Amaz\xF4nia v2"
+  "Sert\xE3o BD": "BD Sert\xE3o v3"
