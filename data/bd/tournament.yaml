@@ -1,23 +1,23 @@
 name: Brazilian Dynasty
 maps:
-  - "BD Amaz\xF4nia v2"
-  - "BD Arauc\xE1rias v2"
-  - BD Arena Costeira v1
-  - BD Fernando de Noronha v2
-  - "BD Festa da P\xF3lvora v3"
-  - "BD Len\xE7\xF3is Maranhenses v1"
-  - BD Monte Pascoal v2
-  - BD Pantanal v1
-  - BD Parque do Ipiranga v1
-  - "BD Serra dos Caraj\xE1s v1"
-  - "BD Sert\xE3o v3"
-  - BD Tepui v2
-  - BD Vale da Selva v3
+- "BD Amaz\xF4nia v2"
+- "BD Arauc\xE1rias v2"
+- BD Arena Costeira v1
+- BD Fernando de Noronha v2
+- "BD Festa da P\xF3lvora v3"
+- "BD Len\xE7\xF3is Maranhenses v1"
+- BD Monte Pascoal v2
+- BD Pantanal v1
+- BD Parque do Ipiranga v1
+- "BD Serra dos Caraj\xE1s v1"
+- "BD Sert\xE3o v3"
+- BD Tepui v2
+- BD Vale da Selva v3
 brackets:
-  - Main Event
-  - International Qualifier 1
-  - International Qualifier 2
-  - Regional Qualifier
+- Main Event
+- International Qualifier 1
+- International Qualifier 2
+- Regional Qualifier
 presets:
   maps:
     pa3: MSnJa
@@ -47,3 +47,6 @@ map_renames:
   "Len\xE7\xF3is Maranhenses BD": "BD Len\xE7\xF3is Maranhenses v1"
   "Amaz\xF4nia BD": "BD Amaz\xF4nia v2"
   "Sert\xE3o BD": "BD Sert\xE3o v3"
+  Vale da Selva BD: BD Vale da Selva v3
+  Tepui BD: BD Tepui v2
+  "Festa da P\xF3lvora BD": "BD Festa da P\xF3lvora v3"
