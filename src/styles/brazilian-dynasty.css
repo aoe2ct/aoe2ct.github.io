@@ -13,7 +13,6 @@ body:has(.brazilian-dynasty) {
 
 html {
   background-color: transparent;
-  overflow: hidden;
 }
 
 :root {
@@ -164,4 +163,3 @@ tbody tr:nth-child(2n + 1) {
   transform: scale(1.5);
   margin-right: 2rem;
 }
-
