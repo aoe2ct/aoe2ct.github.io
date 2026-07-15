@@ -31,9 +31,11 @@ presets:
   maps:
     pa3: CKjFl
     bo5: LAmXj
+    bo7: HFLeq
   civs:
     pa3: XwiqD
     bo5: vtksA
+    bo7: ilCFX
 naming:
   maps:
     prefix: Spec2_

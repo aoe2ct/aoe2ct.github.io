@@ -31,9 +31,11 @@ presets:
       - TdiLo
       - Satec
     bo5: XeueH
+    bo7: zddRt
   civs:
     pa3: XwiqD
     bo5: vtksA
+    bo7: ilCFX
 naming:
   maps:
     prefix: Spec2_

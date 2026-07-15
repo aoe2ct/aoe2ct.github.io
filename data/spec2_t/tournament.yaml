@@ -30,9 +30,11 @@ presets:
   maps:
     pa3: oYZGg
     bo5: EuZVs
+    bo7: gMWsW
   civs:
     pa3: XwiqD
     bo5: vtksA
+    bo7: ilCFX
 map_renames:
   Spec2_Amazonia: "Amaz\xF4nia"
   TTL5 Coast Arena v5: Spec2_Coast Arena
