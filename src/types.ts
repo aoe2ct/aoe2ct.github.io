@@ -22,7 +22,6 @@ export type Counts = [string, AllCounts];
 export type Game = {
   bracket: string;
   stage: string;
-  week: number;
   mapDraftId: string;
   civDraftId: string;
   players: [string, string];

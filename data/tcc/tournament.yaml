@@ -1,0 +1,37 @@
+name: T90 Community Cup
+maps:
+- TCC African Reed Beds
+- TCC Coast to Mountain
+- TCC Fortified Clearing
+- TCC Fractal
+- TCC Golden Lakes
+- TCC Llanganati
+- TCC Outcrop
+- TCC Ring of Reeds
+- TCC Spiral
+brackets:
+- Champion
+- Monks
+- Mangonels
+- Knights
+- Light Cavs
+- Pikemen
+- Longswords
+- Crossbows
+- Skirms
+- Spearmen
+- Archers
+- Militia
+presets:
+  maps:
+    bo3: BNdEh
+    bo5: EbPGx
+  civs:
+    bo3: IwarA
+    bo5: NurUH
+naming:
+  maps:
+    prefix: 'TCC '
+map_renames:
+  OeCoC Fractal: TCC Fractal
+  TTL3 Coast to Mountain: TCC Coast to Mountain
