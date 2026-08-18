@@ -1,0 +1,28 @@
+name: 'T90 Community Cup: 3rd Edition'
+maps:
+- TCC3_Castra
+- TCC3_Chile_con_carne
+- TCC3_Comeer
+- TCC3_Drumlin
+- "TCC3_Festa_da_P\xF3lvora"
+- TCC3_Loonsche_Duinen_v1
+- TCC3_Monte_Pascoal
+- TCC3_Pez_Panino
+- TCC3_Tepui
+- TCC3_Thames
+- TCC3_Winged
+brackets:
+- Champion
+presets:
+  maps:
+    bo3: OrFMd
+    bo5: PczRQ
+  civs:
+    bo3: uYssw
+    bo5: txiSQ
+naming:
+  maps:
+    prefix: TCC3_
+    versioned: false
+map_renames:
+  "TCC3_Festa_da_P\xA2lvora": "TCC3_Festa_da_P\xF3lvora"
