@@ -34,7 +34,12 @@ presets:
 naming:
   maps:
     prefix: TCC3_
-    versioned: false
+    versioned: true
+  map_draft:
+    renames:
+      Festa_da_Pólvora: "Festa da Pólvora"
 map_renames:
-  "TCC3_Festa_da_P\xA2lvora": TCC3_Festa_da_Polvora
-  "TCC3_Festa_da_P\xF3lvora": TCC3_Festa_da_Polvora
+  TCC3_Festa_da_Polvora: "Festa da Pólvora"
+  TCC3_Festa_da_P¢lvora: "Festa da Pólvora"
+  "TCC3_Festa_da_P\xF3lvora": "Festa da Pólvora"
+  TCC3_Loonsche_Duinen_v1: "Loonsche Duynen"
