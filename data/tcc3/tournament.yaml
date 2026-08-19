@@ -4,7 +4,7 @@ maps:
   - TCC3_Chile_con_carne
   - TCC3_Comeer
   - TCC3_Drumlin
-  - "TCC3_Festa_da_P\xF3lvora"
+  - TCC3_Festa_da_Polvora
   - TCC3_Loonsche_Duinen_v1
   - TCC3_Monte_Pascoal
   - TCC3_Pez_Panino
@@ -36,4 +36,5 @@ naming:
     prefix: TCC3_
     versioned: false
 map_renames:
-  "TCC3_Festa_da_P\xA2lvora": "TCC3_Festa_da_P\xF3lvora"
+  "TCC3_Festa_da_P\xA2lvora": TCC3_Festa_da_Polvora
+  "TCC3_Festa_da_P\xF3lvora": TCC3_Festa_da_Polvora
