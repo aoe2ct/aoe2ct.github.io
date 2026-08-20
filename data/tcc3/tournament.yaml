@@ -38,6 +38,7 @@ naming:
   map_draft:
     renames:
       "Festa_da_P\xF3lvora": "Festa da P\xF3lvora"
+      "Chili Con Carne": "Chili con carne"
 map_renames:
   TCC3_Festa_da_Polvora: "Festa da P\xF3lvora"
   "TCC3_Festa_da_P\xA2lvora": "Festa da P\xF3lvora"
