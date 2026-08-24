@@ -1,29 +1,29 @@
-name: 'T90 Community Cup: 3rd Edition'
+name: "T90 Community Cup: 3rd Edition"
 maps:
-- TCC3_Castra
-- TCC3_Chile_con_carne
-- TCC3_Comeer
-- TCC3_Drumlin
-- TCC3_Festa_da_Polvora
-- TCC3_Loonsche_Duinen
-- TCC3_Monte_Pascoal
-- TCC3_Pez_Panino
-- TCC3_Tepui
-- TCC3_Thames
-- TCC3_Winged
+  - TCC3_Castra
+  - TCC3_Chile_con_carne
+  - TCC3_Comeer
+  - TCC3_Drumlin
+  - TCC3_Festa_da_Polvora
+  - TCC3_Loonsche_Duinen
+  - TCC3_Monte_Pascoal
+  - TCC3_Pez_Panino
+  - TCC3_Tepui
+  - TCC3_Thames
+  - TCC3_Winged
 brackets:
-- Champion
-- Monks
-- Mangonels
-- Knights
-- Rams
-- Light Cavs
-- Pikemen
-- Longswords
-- Crossbows
-- Scouts
-- Archers
-- Militia
+  - Champion
+  - Monks
+  - Mangonels
+  - Knights
+  - Rams
+  - Light Cavs
+  - Pikemen
+  - Longswords
+  - Crossbows
+  - Scouts
+  - Archers
+  - Militia
 presets:
   maps:
     bo3: OrFMd
@@ -38,7 +38,7 @@ naming:
   map_draft:
     renames:
       "Festa_da_P\xF3lvora": "Festa da P\xF3lvora"
-      Chili Con Carne: Chili con carne
+      Chile Con Carne: Chile con carne
 map_renames:
   TCC3_Festa_da_Polvora: "Festa da P\xF3lvora"
   "TCC3_Festa_da_P\xA2lvora": "Festa da P\xF3lvora"
