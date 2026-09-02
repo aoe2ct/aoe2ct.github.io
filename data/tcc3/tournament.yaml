@@ -1,29 +1,29 @@
-name: "T90 Community Cup: 3rd Edition"
+name: 'T90 Community Cup: 3rd Edition'
 maps:
-  - TCC3_Castra
-  - TCC3_Chile_con_carne
-  - TCC3_Comeer
-  - TCC3_Drumlin
-  - TCC3_Festa_da_Polvora
-  - TCC3_Loonsche_Duinen
-  - TCC3_Monte_Pascoal
-  - TCC3_Pez_Panino
-  - TCC3_Tepui
-  - TCC3_Thames
-  - TCC3_Winged
+- TCC3_Castra
+- TCC3_Chile_con_carne
+- TCC3_Comeer
+- TCC3_Drumlin
+- TCC3_Festa_da_Polvora
+- TCC3_Loonsche_Duinen
+- TCC3_Monte_Pascoal
+- TCC3_Pez_Panino
+- TCC3_Tepui
+- TCC3_Thames
+- TCC3_Winged
 brackets:
-  - Champions
-  - Monks
-  - Mangonels
-  - Knights
-  - Rams
-  - Light Cavs
-  - Pikemen
-  - Longswords
-  - Crossbows
-  - Scouts
-  - Archers
-  - Militia
+- Champions
+- Monks
+- Mangonels
+- Knights
+- Rams
+- Light Cavs
+- Pikemen
+- Longswords
+- Crossbows
+- Scouts
+- Archers
+- Militia
 presets:
   maps:
     bo3: OrFMd
@@ -46,3 +46,4 @@ map_renames:
   TCC3_Loonsche_Duinen_v1: Loonsche Duynen
   TCC3_Loonsche_Duinen: Loonsche Duynen
   BD5 Winged: TCC3_Winged
+  '[ALS15] Comeer - T2': TCC3_Comeer
