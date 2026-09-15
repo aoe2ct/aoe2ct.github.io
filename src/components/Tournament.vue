@@ -2,13 +2,13 @@
 import { computed } from "vue";
 import TournamentOverview from "./TournamentOverview.vue";
 import PlayerStats from "./PlayerStats.vue";
-import UnitStats from "./UnitStats.vue";
+import AwardsStats from "./AwardsStats.vue";
 const {
   page = "overview",
   code,
   presetMapNames,
 } = defineProps<{
-  page: "overview" | "players" | "results" | "units";
+  page: "overview" | "players" | "results" | "awards";
   code: string;
   presetMapNames: Record<string, string>;
 }>();
@@ -18,7 +18,7 @@ const statsPages = {
   overview: TournamentOverview,
   results: TournamentOverview,
   players: PlayerStats,
-  units: UnitStats,
+  awards: AwardsStats,
 };
 </script>
 
@@ -44,12 +44,12 @@ const statsPages = {
         :class="{ secondary: page != 'players' }"
         >Players</a
       >
-      <!-- <a -->
-      <!--   :href="`${baseLink}/units`" -->
-      <!--   role="button" -->
-      <!--   :class="{ secondary: page != 'units' }" -->
-      <!--   >Units</a -->
-      <!-- > -->
+      <a
+        :href="`${baseLink}/awards`"
+        role="button"
+        :class="{ secondary: page != 'awards' }"
+        >Awards</a
+      >
     </div>
   </div>
   <hr />
