@@ -104,12 +104,12 @@ watchEffect(async () => {
     />
     <AwardTable
       :winners="tradeCounts"
-      title="The Trader"
+      title="The Merchant"
       description="Who created the most Trade Carts and Trade Cogs."
     />
     <AwardTable
       :winners="battleElephantCounts"
-      title="The legend of Liar"
+      title="The Legend of the Liar"
       description="Who created the most Battle Elephants."
     />
     <AwardTable
