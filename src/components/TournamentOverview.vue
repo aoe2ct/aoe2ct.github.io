@@ -4,7 +4,7 @@ import { useData } from "vitepress";
 import MapPicksChart from "./MapPicksChart.vue";
 import MapBansChart from "./MapBansChart.vue";
 import CivPickChart from "./CivPickChart.vue";
-import { allCivs, Draft, Drafts, Game, Player } from "../types";
+import { allCivs, Draft, Drafts, Game, Player, Unit } from "../types";
 import CivBansChart from "./CivBansChart.vue";
 import CivPlayedChart, { type GameStats } from "./CivPlayedChart.vue";
 import CivWinrateChart from "./CivWinrateChart.vue";
@@ -13,6 +13,7 @@ import { fetchData, normalizeCivs } from "../utils";
 import EApmChart from "./EApmChart.vue";
 import VilCountChart from "./VilCountChart.vue";
 import MostCreatedChart from "./MostCreatedChart.vue";
+import UnitAmountChart from "./UnitAmountChart.vue";
 
 const props = defineProps({
   code: { type: String, required: true },
@@ -23,6 +24,7 @@ const { params } = useData();
 const drafts: Ref<Drafts> = ref({ civDrafts: [], mapDrafts: [] });
 const games: Ref<Game[]> = ref([]);
 const players: Ref<Player[]> = ref([]);
+const units: Ref<Unit[]> = ref([]);
 const selectedBrackets = ref([...(params.value?.brackets ?? [])]);
 const selectedMaps: Ref<string[]> = ref([]);
 
@@ -31,10 +33,12 @@ watchEffect(async () => {
     fetchData(props.code, "drafts"),
     fetchData(props.code, "games"),
     fetchData(props.code, "players"),
+    fetchData(props.code, "units"),
   ];
   drafts.value = await promises[0];
   games.value = await promises[1];
   players.value = await promises[2];
+  units.value = await promises[3];
 });
 
 function mapName(map_id: string) {
@@ -169,6 +173,20 @@ const filteredPlayers = computed(
   // .filter((player) => selectedMaps.value.includes(mapName(player.map))),
 );
 
+const unitCounts = computed(() => {
+  return units.value.reduce(
+    (totals, playerData) => {
+      if (playerData.unit_name == "Villager") return totals;
+      return {
+        ...totals,
+        [playerData.unit_name]:
+          (totals[playerData.unit_name] ?? 0) + playerData.amount,
+      };
+    },
+    {} as Record<string, number>,
+  );
+});
+
 const allMaps = computed(() => {
   return [...new Set(games.value.map((game) => game.map))].toSorted();
 });
@@ -294,6 +312,7 @@ watch(allMaps, () => {
   <EApmChart :players="filteredPlayers" />
   <VilCountChart :players="filteredPlayers" />
   <MostCreatedChart :players="filteredPlayers" />
+  <UnitAmountChart v-if="units.length" :units="unitCounts" />
 </template>
 
 <style lang="css" module>

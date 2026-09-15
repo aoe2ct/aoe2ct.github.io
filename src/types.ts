@@ -67,6 +67,13 @@ export type Player = {
   most_created_count: number;
 };
 
+export type Unit = {
+  player: string;
+  unit_id: number;
+  unit_name: string;
+  amount: number;
+};
+
 export const allCivs = [
   "Britons",
   "Byzantines",

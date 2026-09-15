@@ -89,6 +89,9 @@ const availableSeries = {
   mapPlayed(counts: [string, number][]): BarSeriesOption {
     return { data: counts.map(([_, count]) => count) };
   },
+  unitCounts(counts): BarSeriesOption {
+    return { data: counts.map(([_, count]) => count) };
+  },
 };
 
 type Series = typeof availableSeries;
